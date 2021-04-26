@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+<div class="container pt-3">
+<!--    <h2>Employees List</h2>-->
+    <a th:href="@{/classes/newClassForm}" class="btn btn-primary btn-sm mb-3" >Add class</a>
+    <table class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Classes</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="class: ${classes}">
+            <td th:text="${class.className}"></td>
+
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${class.id})}" class="btn btn-primary">Update</a></td>
+            <td> <a th:href="@{/deleteClass/{id}(id=${class.id})}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
