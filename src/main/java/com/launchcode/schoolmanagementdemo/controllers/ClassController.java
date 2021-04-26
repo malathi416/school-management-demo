@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("classes")
@@ -44,5 +42,26 @@ public class ClassController {
         classesRepository.save(classes);
         return "redirect:";
     }
+    @GetMapping("showFormForUpdate/{id}")
+    public String displayEditForm(Model model, @PathVariable(value="id") Integer id) {
+        Optional<Classes> result = classesRepository.findById(id);
+        Classes editClass = result.get();
+        model.addAttribute("title","Update  Class  where  ID = "+id +" name is "+ editClass.getClassName()) ;
+        model.addAttribute("classes",editClass);
+        return "class/edit-class-page";
+    }
+
+
+    @PostMapping("showFormForUpdate")
+    public String processEditForm(@RequestParam(required = false) Integer id,@ModelAttribute Classes editClass) {
+        classesRepository.save(editClass);
+        return "redirect:";
+    }
+//    @GetMapping("/delete/{id}")
+//    public String deleteEventById( @PathVariable(value="id") Integer id) {
+//        classesRepository.deleteById(id);
+//        return "redirect:/";
+//
+//    }
 
 }
