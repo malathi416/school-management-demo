@@ -5,6 +5,7 @@
 <body class="container pt-3">
 <header th:replace="fragments :: header"></header>
 <form method="post">
+    <div class="container pt-3">
     <div class="form-group">
         <label>Class Name
             <input th:field="${classes.className}" class="form-control">
@@ -16,6 +17,7 @@
     </div>
     <div>
         <a class="nav-item"><a class="nav-link" href="/classes">Black To Classes</a></a>
+    </div>
     </div>
 </form>
 </body>

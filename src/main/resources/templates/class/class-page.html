@@ -5,6 +5,8 @@
 <header th:replace="fragments :: header"></header>
 <div class="container pt-3">
     <a th:href="@{/classes/newClassForm}" class="btn btn-primary btn-sm mb-3" >Add class</a>
+    <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+<!--    <div class="alert alert-primary" role="alert" th:text="${message}" th:if="${message}"></div>-->
     <table class="table table-striped table-responsive-md">
         <thead>
         <tr>
@@ -18,9 +20,11 @@
             <td th:text="${class.className}"></td>
 
             <td> <a th:href="@{/classes/showFormForUpdate/{id}(id=${class.id})}" class="btn btn-primary">Update</a></td>
-            <td> <a th:href="@{/classes/deleteClass/{id}(id=${class.id})}" class="btn btn-danger">Delete</a></td>
+            <td> <a th:href="@{/classes/deleteClass/{id}(id=${class.id})}" class="btn btn-danger" >Delete</a></td>
+
         </tr>
         </tbody>
+        <p th:text="${message}"></p>
     </table>
 </div>
 </body>

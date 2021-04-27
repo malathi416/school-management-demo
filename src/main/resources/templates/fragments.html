@@ -9,13 +9,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body class="container pt-3">
 <nav th:fragment="header">
+    <div class="bg-secondary">
     <div class="container pt-3">
+
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
                 <div class="text-info">
+
                 <h1 class="heading-section">School Management</h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,6 +32,9 @@
         <li class="nav-item"><a class="nav-link" href="/student">Student</a></li>
         <li class="nav-item"><a class="nav-link"  href="/logout">Logout</a></li>
     </ul>
+        <ul class="nav justify-content-right">
+            <li class="nav-item"><a class="nav-link"  href="/logout">Logout</a></li>
+        </ul>
     </nav>
     <h3 th:text="${title}" class="text-info"></h3>
 </nav>

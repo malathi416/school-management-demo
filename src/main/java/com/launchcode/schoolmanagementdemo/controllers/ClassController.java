@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -53,15 +54,17 @@ public class ClassController {
 
 
     @PostMapping("showFormForUpdate")
-    public String processEditForm(@RequestParam(required = false) Integer id,@ModelAttribute Classes editClass) {
+    public String processEditForm(@RequestParam(required = false) Integer id,@ModelAttribute Classes editClass,final RedirectAttributes redirectAttributes) {
+//        redirectAttributes.addFlashAttribute("message", "updated the class record Success fully !!");
         classesRepository.save(editClass);
+
         return "redirect:";
     }
-//    @GetMapping("/delete/{id}")
-//    public String deleteEventById( @PathVariable(value="id") Integer id) {
-//        classesRepository.deleteById(id);
-//        return "redirect:/";
-//
-//    }
+    @GetMapping("/deleteClass/{id}")
+    public String deleteEventById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+        classesRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("success", "Deleted the class record Success fully where  ID = "+ id +"");
+        return "redirect:/classes";
+    }
 
 }
