@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container pt-3">
+<header th:replace="fragments :: header"></header>
+<div class="container pt-3">
+    <a th:href="@{/teacher/newTeacherForm}" class="btn btn-primary btn-sm mb-3" >Add Teacher</a>
+    <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+    <!--    <div class="alert alert-primary" role="alert" th:text="${message}" th:if="${message}"></div>-->
+    <table class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>PhoneNumber</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>DateOfBirth</th>
+            <th>ClassesToTeach</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teacher: ${teachers}">
+            <td th:text="${teacher.personalDetails.firstName}"></td>
+            <td th:text="${teacher.personalDetails.lastName}"></td>
+            <td th:text="${teacher.personalDetails.phoneNumber}"></td>
+            <td th:text="${teacher.personalDetails.email}"></td>
+            <td th:text="${teacher.personalDetails.dateOfBirth}"></td>
+            <td th:text="${teacher.personalDetails.gender}"></td>
+            <td th:text="${teacher.personalDetails.classesTeach}"></td>
+            <td> <a th:href="@{/teacher/showFormForUpdate/{id}(id=${teacher.id})}" class="btn btn-primary">Update</a></td>
+            <td> <a th:href="@{/teacher/deleteTeacher/{id}(id=${teacher.id})}" class="btn btn-danger" >Delete</a></td>
+
+        </tr>
+        </tbody>
+        <p th:text="${message}"></p>
+    </table>
+</div>
+</body>
+</html>
