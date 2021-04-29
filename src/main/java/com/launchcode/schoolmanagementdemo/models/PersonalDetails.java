@@ -7,6 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+
 @Entity
 public class PersonalDetails extends AbstractEntity {
 
@@ -25,9 +26,6 @@ public class PersonalDetails extends AbstractEntity {
     @Email(message = "Invalid Email. Try Again!!")
     private String email;
 
-    @Size(min=1, max=6 ,message = "At least One Checkbox must be checked")
-    private String gender;
-
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
@@ -35,21 +33,12 @@ public class PersonalDetails extends AbstractEntity {
 
     }
 
-    public PersonalDetails(String firstName, String lastName, String phoneNumber, String email, String gender, LocalDate dateOfBirth) {
+    public PersonalDetails(String firstName, String lastName, String phoneNumber, String email,  LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.gender = gender;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public LocalDate getDateOfBirth() {

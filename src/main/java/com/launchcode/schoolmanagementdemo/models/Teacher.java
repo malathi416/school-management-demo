@@ -1,28 +1,33 @@
 package com.launchcode.schoolmanagementdemo.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class Teacher extends AbstractEntity{
+
     @OneToOne(cascade = CascadeType.ALL)
     @Valid
     @NotNull
     private PersonalDetails personalDetails;
 
-    @Size(min=1, max=6 ,message = "At least One Checkbox must be checked")
-    private String classesTeach;
+    private Gender gender;
+
+    @ManyToOne
+    @NotNull(message = "class is required")
+    private Classes classes;
 
     public Teacher (){
     }
 
-    public Teacher(String classesTeach) {
-        this.classesTeach = classesTeach;
+    public Teacher(Gender gender, Classes classes) {
+        this.gender = gender;
+        this.classes = classes;
     }
 
     public PersonalDetails getPersonalDetails() {
@@ -33,12 +38,19 @@ public class Teacher extends AbstractEntity{
         this.personalDetails = personalDetails;
     }
 
-    public String getClassesTeach() {
-        return classesTeach;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setClassesTeach(String classesTeach) {
-        this.classesTeach = classesTeach;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
+    public Classes getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
+    }
 }
