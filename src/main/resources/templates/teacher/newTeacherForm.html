@@ -66,12 +66,13 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Classes To Teach</label>
             <div class="col-xs-4">
-                <select class="form-control" th:field="${teacher.classes}"multiple="multiple">
+                <select class="form-control" th:field="${teacher.classes}">
                     <option th:each="classes : ${classesToTeach}"
                             th:value="${classes.id}"
                             th:text="${classes.className}">
                     </option>
                 </select>
+
             </div>
             <p class="text-danger" th:errors="${teacher.classes}"></p>
         </div>

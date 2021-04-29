@@ -30,8 +30,8 @@
             <td th:text="${teacher.gender}"></td>
             <td th:text="${teacher.personalDetails.dateOfBirth}"></td>
             <td th:text="${teacher.classes}"></td>
-            <td> <a th:href="@{/teacher/showFormForUpdate/{id}(id=${teacher.id})}" class="btn btn-primary">Update</a></td>
-            <td> <a th:href="@{/teacher/deleteTeacher/{id}(id=${teacher.id})}" class="btn btn-danger" >Delete</a></td>
+            <td> <a th:href="@{/teachers/showFormForUpdate/{id}(id=${teacher.id})}" class="btn btn-primary">Update</a></td>
+            <td> <a th:href="@{/teachers/deleteTeacher/{id}(id=${teacher.id})}" class="btn btn-danger" >Delete</a></td>
 
         </tr>
         </tbody>
