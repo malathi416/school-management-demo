@@ -57,11 +57,10 @@ public class ClassController {
     public String processEditForm(@RequestParam(required = false) Integer id,@ModelAttribute Classes editClass,final RedirectAttributes redirectAttributes) {
 //        redirectAttributes.addFlashAttribute("message", "updated the class record Success fully !!");
         classesRepository.save(editClass);
-
         return "redirect:";
     }
     @GetMapping("/deleteClass/{id}")
-    public String deleteEventById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+    public String deleteClassById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         classesRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("success", "Deleted the class record Success fully where  ID = "+ id +"");
         return "redirect:/classes";
