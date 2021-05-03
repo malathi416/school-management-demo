@@ -24,13 +24,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="student: ${Students}">
+        <tr th:each="student: ${students}">
             <td th:text="${student.personalDetails.firstName}"></td>
             <td th:text="${student.personalDetails.lastName}"></td>
             <td th:text="${student.personalDetails.phoneNumber}"></td>
             <td th:text="${student.personalDetails.email}"></td>
             <td th:text="${student.gender}"></td>
             <td th:text="${student.personalDetails.dateOfBirth}"></td>
+            <td th:text="${student.schoolYear}"></td>
             <td th:text="${student.classes}"></td>
             <td> <a th:href="@{/students/showFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Update</a></td>
             <td> <a th:href="@{/students/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger" >Delete</a></td>

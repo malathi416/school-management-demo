@@ -12,7 +12,8 @@ public class Student extends AbstractEntity {
     @Valid
     @NotNull
     private PersonalDetails personalDetails;
-
+    @Valid
+    @NotNull
     private Gender gender;
 
     private String schoolYear;
@@ -26,8 +27,7 @@ public class Student extends AbstractEntity {
 
     }
 
-    public Student(PersonalDetails personalDetails, Gender gender, String schoolYear, Classes classes) {
-        this.personalDetails = personalDetails;
+    public Student( Gender gender, String schoolYear, Classes classes) {
         this.gender = gender;
         this.schoolYear = schoolYear;
         this.classes = classes;
