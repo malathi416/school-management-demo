@@ -12,6 +12,7 @@ public class Student extends AbstractEntity {
     @Valid
     @NotNull
     private PersonalDetails personalDetails;
+
     @Valid
     @NotNull
     private Gender gender;

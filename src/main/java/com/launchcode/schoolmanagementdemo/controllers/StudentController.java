@@ -44,7 +44,7 @@ public class StudentController {
         if(errors.hasErrors()){
             model.addAttribute("title", "Add Student");
             model.addAttribute("genders", Gender.values());
-            model.addAttribute("classesToTeach",classesRepository.findAll());
+            model.addAttribute("classRegistered",classesRepository.findAll());
             return "student/newStudentForm";
         }
         studentRepository.save(student);
@@ -55,10 +55,10 @@ public class StudentController {
         Optional<Student> result = studentRepository.findById(id);
         Student editStudent = result.get();
         model.addAttribute("title","Update  Student  where  ID = "+id +" name is "+ editStudent.getPersonalDetails().getFirstName()) ;
-        model.addAttribute("teacher",editStudent);
+        model.addAttribute("student",editStudent);
         model.addAttribute("genders", Gender.values());
-        model.addAttribute("classesToTeach",classesRepository.findAll());
-        return "teacher/edit-student-page";
+        model.addAttribute("classRegistered",classesRepository.findAll());
+        return "student/edit-student-page";
     }
     @PostMapping("showFormForUpdate")
     public String processStudentEditedForm(@RequestParam(required = false) Integer id, @ModelAttribute Student editStudent, RedirectAttributes redirectAttributes) {
