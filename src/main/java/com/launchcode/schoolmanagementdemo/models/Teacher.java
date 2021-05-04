@@ -4,8 +4,7 @@ package com.launchcode.schoolmanagementdemo.models;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 @Entity
@@ -16,13 +15,16 @@ public class Teacher extends AbstractEntity{
     @NotNull
     private PersonalDetails personalDetails;
 
+    @Valid
+    @NotNull(message = "Gender is required")
     private Gender gender;
 
     @ManyToOne
+    @Valid
     @NotNull(message = "class is required")
     private Classes classes;
 
-    public Teacher (){
+    public Teacher(){
     }
 
     public Teacher(Gender gender, Classes classes) {

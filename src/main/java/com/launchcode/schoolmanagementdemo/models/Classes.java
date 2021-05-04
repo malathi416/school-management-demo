@@ -1,6 +1,7 @@
 package com.launchcode.schoolmanagementdemo.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -35,6 +36,7 @@ public class Classes extends AbstractEntity {
     public List<Teacher> getTeachers() {
         return teachers;
     }
+
 
     @Override
     public String toString() {

@@ -40,7 +40,7 @@ public class ClassController {
 //            model.addAttribute(new Classes());
             return "class/newClassForm";
         }
-        classesRepository.save(classes);
+       classesRepository.save(classes);
         return "redirect:";
     }
     @GetMapping("showFormForUpdate/{id}")

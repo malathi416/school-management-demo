@@ -1,7 +1,7 @@
 package com.launchcode.schoolmanagementdemo.controllers;
 
 import com.launchcode.schoolmanagementdemo.data.ClassesRepository;
-import com.launchcode.schoolmanagementdemo.data.TeachersRepository;
+import com.launchcode.schoolmanagementdemo.data.TeacherRepository;
 import com.launchcode.schoolmanagementdemo.models.Gender;
 import com.launchcode.schoolmanagementdemo.models.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class TeacherController {
 
     @Autowired
-    private TeachersRepository teacherRepository;
+    private TeacherRepository teacherRepository;
 
     @Autowired
     private ClassesRepository classesRepository;

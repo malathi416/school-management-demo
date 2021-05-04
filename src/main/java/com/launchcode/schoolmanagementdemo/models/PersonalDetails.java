@@ -3,19 +3,17 @@ package com.launchcode.schoolmanagementdemo.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
 public class PersonalDetails extends AbstractEntity {
 
-    @NotBlank(message = "Name is required")
+    @NotBlank(message = "First Name is required")
     @Size(min = 3,max = 50,message = "Name must be between 3 and 50 characters")
     private String firstName;
 
-    @NotBlank(message = "Name is required")
+    @NotBlank(message = "Last Name is required")
     @Size(min = 1,max = 50,message = "Name must be between 1 and 50 characters")
     private String lastName;
 
@@ -26,6 +24,8 @@ public class PersonalDetails extends AbstractEntity {
     @Email(message = "Invalid Email. Try Again!!")
     private String email;
 
+//    @DateTimeFormat(pattern="MM/dd/yyyy")
+//    @NotBlank(message="Date Of Birth is required")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
 

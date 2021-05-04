@@ -1,10 +1,10 @@
 package com.launchcode.schoolmanagementdemo.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
 
 @Entity
 public class Student extends AbstractEntity {
@@ -14,15 +14,18 @@ public class Student extends AbstractEntity {
     private PersonalDetails personalDetails;
 
     @Valid
-    @NotNull
+    @NotNull(message = "Gender is required")
     private Gender gender;
 
+    @NotEmpty(message = "School year is required")
     private String schoolYear;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @Valid
-    @NotNull
+    @NotNull(message = "class is required")
     private Classes classes;
+
+
 
     public Student(){
 
@@ -50,11 +53,11 @@ public class Student extends AbstractEntity {
         this.gender = gender;
     }
 
-    public Classes getClasses() {
+    public com.launchcode.schoolmanagementdemo.models.Classes getClasses() {
         return classes;
     }
 
-    public void setClasses(Classes classes) {
+    public void setClasses(com.launchcode.schoolmanagementdemo.models.Classes classes) {
         this.classes = classes;
     }
 

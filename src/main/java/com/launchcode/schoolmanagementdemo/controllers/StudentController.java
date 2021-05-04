@@ -1,10 +1,10 @@
 package com.launchcode.schoolmanagementdemo.controllers;
 
+
 import com.launchcode.schoolmanagementdemo.data.ClassesRepository;
 import com.launchcode.schoolmanagementdemo.data.StudentRepository;
 import com.launchcode.schoolmanagementdemo.models.Gender;
 import com.launchcode.schoolmanagementdemo.models.Student;
-import com.launchcode.schoolmanagementdemo.models.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,6 @@ public class StudentController {
 
     @Autowired
     private StudentRepository studentRepository;
-
     @Autowired
     private ClassesRepository classesRepository;
     @GetMapping
@@ -68,5 +67,11 @@ public class StudentController {
 //        model.addAttribute("message","updated the Teacher record Success fully !!");
 
         return "redirect:";
+    }
+    @GetMapping("/deleteStudent/{id}")
+    public String deleteStudentById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+        studentRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("success", "Deleted the Student record Success fully !!");
+        return "redirect:/students";
     }
 }

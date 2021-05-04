@@ -1,8 +1,8 @@
 package com.launchcode.schoolmanagementdemo.models;
 
 public enum Gender {
-    MALE("male"),
-    FEMALE("female");
+    MALE("Male"),
+    FEMALE("Female");
     private final String displayName;
     Gender(String displayName){
         this.displayName=displayName;
