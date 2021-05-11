@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 public class Student extends AbstractEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @Valid
-    @NotNull
+    @NotNull(message = "Class is required")
     private PersonalDetails personalDetails;
 
     @Valid
@@ -22,7 +22,7 @@ public class Student extends AbstractEntity {
 
     @ManyToOne
     @Valid
-    @NotNull(message = "class is required")
+    @NotNull(message = "Class is required")
     private Classes classes;
 
 
