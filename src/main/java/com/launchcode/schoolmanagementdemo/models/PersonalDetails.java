@@ -26,7 +26,9 @@ public class PersonalDetails extends AbstractEntity {
 
 //    @DateTimeFormat(pattern="MM/dd/yyyy")
 //    @NotBlank(message="Date Of Birth is required")
+@NotNull(message = "Please enter Date Of Birth")
     @DateTimeFormat(pattern="yyyy-MM-dd")
+@Past(message = "Please Enter Correct Date Of Birth")
     private LocalDate dateOfBirth;
 
     public PersonalDetails(){

@@ -76,4 +76,19 @@ public class TeacherController {
         return "redirect:/teachers";
     }
 
+    @GetMapping("detail")
+    public String displayTeacherDetails(@RequestParam Integer teacherId, Model model) {
+
+        Optional<Teacher> result = teacherRepository.findById(teacherId);
+
+        if (result.isEmpty()) {
+            model.addAttribute("title", "Invalid Event ID: " + teacherId);
+        } else {
+            Teacher teacherDetail = result.get();
+            model.addAttribute("title",teacherDetail.getPersonalDetails().getFirstName() + " Details");
+            model.addAttribute("teacher",teacherDetail);
+        }
+        return "teacher/teacher-details";
+    }
+
 }

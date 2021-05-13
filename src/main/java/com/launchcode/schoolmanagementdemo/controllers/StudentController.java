@@ -5,6 +5,7 @@ import com.launchcode.schoolmanagementdemo.data.ClassesRepository;
 import com.launchcode.schoolmanagementdemo.data.StudentRepository;
 import com.launchcode.schoolmanagementdemo.models.Gender;
 import com.launchcode.schoolmanagementdemo.models.Student;
+import com.launchcode.schoolmanagementdemo.models.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,7 @@ public class StudentController {
     private ClassesRepository classesRepository;
     @GetMapping
     public String displayAllStudents(Model model) {
-        model.addAttribute("title","Student List");
+        model.addAttribute("title","Students List");
         model.addAttribute("students",studentRepository.findAll());
         return "student/student-page";
     }
@@ -73,5 +74,20 @@ public class StudentController {
         studentRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("success", "Deleted the Student record Success fully !!");
         return "redirect:/students";
+    }
+
+    @GetMapping("detail")
+    public String displayTeacherDetails(@RequestParam Integer studentId, Model model) {
+
+        Optional<Student> result = studentRepository.findById(studentId);
+
+        if (result.isEmpty()) {
+            model.addAttribute("title", "Invalid Event ID: " + studentId);
+        } else {
+            Student studentDetail = result.get();
+            model.addAttribute("title",studentDetail.getPersonalDetails().getFirstName() + " Details");
+            model.addAttribute("student",studentDetail);
+        }
+        return "student/student-details";
     }
 }

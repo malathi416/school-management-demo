@@ -38,7 +38,7 @@
             <label th:for="gender" class="col-sm-2 col-form-label">Gender</label>
             <div class="col-xs-4">
                 <select class="form-control" th:field="${teacher.gender}">
-                    <option value="">Please select ...</option>
+                    <option value="">Please select ...    </option>
                     <option th:each="gender : ${genders}"
                             th:value="${gender}"
                             th:text="${gender.displayName}"
@@ -58,7 +58,7 @@
             <label class="col-sm-2 col-form-label">Classes To Teach</label>
             <div class="col-xs-4">
                 <select class="form-control" th:field="${teacher.classes}">
-                    <option value="">Please select ...</option>
+                    <option value="">Please select ...    </option>
                     <option th:each="classes : ${classesToTeach}"
                             th:value="${classes.id}"
                             th:text="${classes.className}">
@@ -73,7 +73,8 @@
             <input type="submit" value="Add Teacher" class="btn btn-success">
         </div>
         <div>
-            <a class="nav-item"><a class="nav-link" href="/teachers">Back To Teacher Page</a></a>
+
+            <a class="nav-item"><a class="nav-link" href="/teachers">Cancel</a></a>
         </div>
     </div>
 </form>
