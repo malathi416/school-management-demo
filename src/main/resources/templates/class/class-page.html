@@ -4,9 +4,9 @@
 <body class="container pt-3">
 <header th:replace="fragments :: header"></header>
 <div class="container pt-3">
-    <a th:href="@{/classes/newClassForm}" class="btn btn-primary btn-sm mb-3" >Add class</a>
+    <a th:href="@{/classes/newClassForm}" class="btn btn-primary btn-sm mb-3">Add class</a>
     <div class="alert alert-danger" role="alert" th:text="${success}" th:if="${success}"></div>
-<!--    <div class="alert alert-primary" role="alert" th:text="${message}" th:if="${message}"></div>-->
+    <!--    <div class="alert alert-primary" role="alert" th:text="${message}" th:if="${message}"></div>-->
     <table class="table table-bordered table-striped table-responsive-md">
         <thead>
         <tr>
@@ -18,10 +18,8 @@
         <tbody>
         <tr th:each="class: ${classes}">
             <td th:text="${class.className}"></td>
-
-            <td> <a th:href="@{/classes/showFormForUpdate/{id}(id=${class.id})}" class="btn btn-primary">Update</a></td>
-            <td> <a th:href="@{/classes/deleteClass/{id}(id=${class.id})}" class="btn btn-danger" >Delete</a></td>
-
+            <td><a th:href="@{/classes/showFormForUpdate/{id}(id=${class.id})}" class="btn btn-primary">Update</a></td>
+            <td><a th:href="@{/classes/deleteClass/{id}(id=${class.id})}" class="btn btn-danger">Delete</a></td>
         </tr>
         </tbody>
         <p th:text="${message}"></p>

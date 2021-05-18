@@ -21,7 +21,7 @@ public class Teacher extends AbstractEntity{
 
     @ManyToOne
     @Valid
-    @NotNull(message = "class is required")
+    @NotNull(message = "Class is required")
     private Classes classes;
 
     public Teacher(){

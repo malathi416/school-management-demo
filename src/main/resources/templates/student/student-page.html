@@ -4,38 +4,39 @@
 <body class="container pt-3">
 <header th:replace="fragments :: header"></header>
 <div class="container pt-3">
-    <a th:href="@{/students/newStudentForm}" class="btn btn-primary btn-sm mb-3" >Add Student</a>
+    <a th:href="@{/students/newStudentForm}" class="btn btn-primary btn-sm mb-3">Add Student</a>
     <div class="alert alert-danger" role="alert" th:text="${success}" th:if="${success}"></div>
-<!--    <div class="alert alert-primary" role="alert" th:text="${message}" th:if="${message}"></div>-->
-<!--    <h4 th:text="${message}" class="text-info"></h4>-->
+    <!--    <div class="alert alert-primary" role="alert" th:text="${message}" th:if="${message}"></div>-->
+    <!--    <h4 th:text="${message}" class="text-info"></h4>-->
     <table class="table table-bordered table-striped table-responsive-md" id="studentTable">
         <thead>
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
-<!--            <th>PhoneNumber</th>-->
+            <!--            <th>PhoneNumber</th>-->
             <th>Email</th>
             <th>Gender</th>
-<!--            <th>DateOfBirth</th>-->
-<!--            <th>ClassToRegister</th>-->
-<!--            <th>SchoolYear</th>-->
+            <!--            <th>DateOfBirth</th>-->
+            <!--            <th>ClassToRegister</th>-->
+            <!--            <th>SchoolYear</th>-->
             <th>Update</th>
             <th>Delete</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="student: ${students}">
-            <td><a th:href="'/students/detail?studentId=' + ${student.id}" th:text="${student.personalDetails.firstName}"></a></td>
+            <td><a th:href="'/students/detail?studentId=' + ${student.id}"
+                   th:text="${student.personalDetails.firstName}"></a></td>
             <td th:text="${student.personalDetails.lastName}"></td>
-<!--            <td th:text="${student.personalDetails.phoneNumber}"></td>-->
+            <!--            <td th:text="${student.personalDetails.phoneNumber}"></td>-->
             <td th:text="${student.personalDetails.email}"></td>
             <td th:text="${student.gender}"></td>
-<!--            <td th:text="${student.personalDetails.dateOfBirth}"></td>-->
-<!--            <td th:text="${student.classes}"></td>-->
-<!--            <td th:text="${student.schoolYear}"></td>-->
-            <td> <a th:href="@{/students/showFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Update</a></td>
-            <td> <a th:href="@{/students/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger" >Delete</a></td>
-
+            <!--            <td th:text="${student.personalDetails.dateOfBirth}"></td>-->
+            <!--            <td th:text="${student.classes}"></td>-->
+            <!--            <td th:text="${student.schoolYear}"></td>-->
+            <td><a th:href="@{/students/showFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
+            </td>
+            <td><a th:href="@{/students/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger">Delete</a></td>
         </tr>
         </tbody>
         <p th:text="${message}"></p>
@@ -45,6 +46,7 @@
     $(document).ready(function() {
         $('#studentTable').DataTable();
     });
+
 </script>
 </body>
 </html>

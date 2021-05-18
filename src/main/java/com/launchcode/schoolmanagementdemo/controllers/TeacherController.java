@@ -54,7 +54,8 @@ public class TeacherController {
     public String displayTeacherEditForm(Model model, @PathVariable(value="id") Integer id) {
         Optional<Teacher> result = teacherRepository.findById(id);
         Teacher editTeacher = result.get();
-        model.addAttribute("title","Update  Teacher  where  ID = "+id +" name is "+ editTeacher.getPersonalDetails().getFirstName()) ;
+//        model.addAttribute("title","Update  Teacher  where  ID = "+id +" name is "+ editTeacher.getPersonalDetails().getFirstName()) ;
+        model.addAttribute("title","Update  Teacher "+ editTeacher.getPersonalDetails().getFirstName()) ;
         model.addAttribute("teacher",editTeacher);
         model.addAttribute("genders", Gender.values());
         model.addAttribute("classesToTeach",classesRepository.findAll());

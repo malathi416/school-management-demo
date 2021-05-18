@@ -10,32 +10,30 @@ import java.time.LocalDate;
 public class PersonalDetails extends AbstractEntity {
 
     @NotBlank(message = "First Name is required")
-    @Size(min = 3,max = 50,message = "Name must be between 3 and 50 characters")
+    @Size(min = 3, max = 50, message = "Name must be between 3 - 50 characters")
     private String firstName;
 
     @NotBlank(message = "Last Name is required")
-    @Size(min = 1,max = 50,message = "Name must be between 1 and 50 characters")
+    @Size(min = 1, max = 50, message = "Name must be between 1 - 50 characters")
     private String lastName;
 
-    @NotBlank(message="Phone Number is required")
+    @NotBlank(message = "Phone Number is required")
     private String phoneNumber;
 
-    @NotBlank(message="Email is required")
+    @NotBlank(message = "Email is required")
     @Email(message = "Invalid Email. Try Again!!")
     private String email;
 
-//    @DateTimeFormat(pattern="MM/dd/yyyy")
-//    @NotBlank(message="Date Of Birth is required")
-@NotNull(message = "Please enter Date Of Birth")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-@Past(message = "Please Enter Correct Date Of Birth")
+    @NotNull(message = "Please Enter Date Of Birth")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "Please Enter Correct Date Of Birth")
     private LocalDate dateOfBirth;
 
-    public PersonalDetails(){
+    public PersonalDetails() {
 
     }
 
-    public PersonalDetails(String firstName, String lastName, String phoneNumber, String email,  LocalDate dateOfBirth) {
+    public PersonalDetails(String firstName, String lastName, String phoneNumber, String email, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;

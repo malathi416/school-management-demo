@@ -47,7 +47,7 @@ public class ClassController {
     public String displayEditForm(Model model, @PathVariable(value="id") Integer id) {
         Optional<Classes> result = classesRepository.findById(id);
         Classes editClass = result.get();
-        model.addAttribute("title","Update  Class  where  ID = "+id +" name is "+ editClass.getClassName()) ;
+        model.addAttribute("title","Update  Class   "+ editClass.getClassName()) ;
         model.addAttribute("classes",editClass);
         return "class/edit-class-page";
     }
@@ -62,7 +62,7 @@ public class ClassController {
     @GetMapping("/deleteClass/{id}")
     public String deleteClassById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         classesRepository.deleteById(id);
-        redirectAttributes.addFlashAttribute("success", "Deleted the class record Success fully where  ID = "+ id +"");
+        redirectAttributes.addFlashAttribute("success", "Deleted the class record Success fully !!");
         return "redirect:/classes";
     }
 
