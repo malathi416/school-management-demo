@@ -19,7 +19,7 @@
         <tr th:each="class: ${classes}">
             <td th:text="${class.className}"></td>
             <td><a th:href="@{/classes/showFormForUpdate/{id}(id=${class.id})}" class="btn btn-primary">Update</a></td>
-            <td><a th:href="@{/classes/deleteClass/{id}(id=${class.id})}" class="btn btn-danger">Delete</a></td>
+<!--            <td><a th:href="@{/classes/deleteClass/{id}(id=${class.id})}" class="btn btn-danger">Delete</a></td>-->
         </tr>
         </tbody>
         <p th:text="${message}"></p>

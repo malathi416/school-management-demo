@@ -36,17 +36,46 @@
             <!--            <td th:text="${student.schoolYear}"></td>-->
             <td><a th:href="@{/students/showFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
             </td>
-            <td><a th:href="@{/students/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger">Delete</a></td>
+            <td><a th:href="@{/students/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</a></td>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to delete this record?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+<!--                            <button class="btn btn-danger" data-dismiss="modal">Delete</button>-->
+                                                <a th:href="@{/students/deleteStudent/{id}(id=${student.id})}"><button type="button" class="btn btn-danger">YES</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
         </tr>
         </tbody>
         <p th:text="${message}"></p>
     </table>
 </div>
+
+
 <script>
     $(document).ready(function() {
         $('#studentTable').DataTable();
     });
 
+</script>
+<script>
+$( document ).on( "click", "#delete", function() {
+  $('#exampleModal').modal('hide');
+});
 </script>
 </body>
 </html>

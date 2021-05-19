@@ -55,7 +55,7 @@ public class TeacherController {
         Optional<Teacher> result = teacherRepository.findById(id);
         Teacher editTeacher = result.get();
 //        model.addAttribute("title","Update  Teacher  where  ID = "+id +" name is "+ editTeacher.getPersonalDetails().getFirstName()) ;
-        model.addAttribute("title","Update  Teacher "+ editTeacher.getPersonalDetails().getFirstName()) ;
+        model.addAttribute("title","Update Teacher Details ");
         model.addAttribute("teacher",editTeacher);
         model.addAttribute("genders", Gender.values());
         model.addAttribute("classesToTeach",classesRepository.findAll());

@@ -54,7 +54,7 @@ public class StudentController {
     public String displayTeacherEditForm(Model model, @PathVariable(value="id") Integer id) {
         Optional<Student> result = studentRepository.findById(id);
         Student editStudent = result.get();
-        model.addAttribute("title","Update  Student  "+ editStudent.getPersonalDetails().getFirstName()) ;
+        model.addAttribute("title","Update Student Details") ;
         model.addAttribute("student",editStudent);
         model.addAttribute("genders", Gender.values());
         model.addAttribute("classRegistered",classesRepository.findAll());

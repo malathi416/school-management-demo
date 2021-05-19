@@ -18,6 +18,7 @@ public class PersonalDetails extends AbstractEntity {
     private String lastName;
 
     @NotBlank(message = "Phone Number is required")
+    @Size(min = 10, max = 10, message = "Must be 10 digits")
     private String phoneNumber;
 
     @NotBlank(message = "Email is required")
