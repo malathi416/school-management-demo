@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container pt-3">
+<body>
 <header th:replace="fragments :: header"></header>
-<div class="container pt-3">
+<div class="container">
     <a th:href="@{/students/newStudentForm}" class="btn btn-primary btn-sm mb-3">Add Student</a>
     <div class="alert alert-danger" role="alert" th:text="${success}" th:if="${success}"></div>
     <!--    <div class="alert alert-primary" role="alert" th:text="${message}" th:if="${message}"></div>-->

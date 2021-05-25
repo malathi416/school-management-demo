@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body class="container pt-3">
+<body>
 <header th:replace="fragments :: header"></header>
-<form method="post">
+<form method="post" th:action="@{/classes/newClassForm}">
     <div class="container">
         <div class="form-group row center-block">
             <label class="col-sm-2 col-form-label">Class Name</label>

@@ -60,24 +60,24 @@ public class StudentController {
         model.addAttribute("classRegistered",classesRepository.findAll());
         return "student/edit-student-page";
     }
-    @PostMapping("showFormForUpdate")
-    public String processStudentEditedForm(@RequestParam(required = false) Integer id, @ModelAttribute Student editStudent, RedirectAttributes redirectAttributes) {
-
-        studentRepository.save(editStudent);
-//        redirectAttributes.addFlashAttribute("message", "updated the Teacher record Success fully !!");
-//        model.addAttribute("message","updated the Teacher record Success fully !!");
-
-        return "redirect:";
-    }
+//    @PostMapping("showFormForUpdate")
+//    public String processStudentEditedForm(@RequestParam(required = false) Integer id, @ModelAttribute Student editStudent, RedirectAttributes redirectAttributes) {
+//
+//        studentRepository.save(editStudent);
+////        redirectAttributes.addFlashAttribute("message", "updated the Teacher record Success fully !!");
+////        model.addAttribute("message","updated the Teacher record Success fully !!");
+//
+//        return "redirect:";
+//    }
     @GetMapping("/deleteStudent/{id}")
     public String deleteStudentById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         studentRepository.deleteById(id);
-        redirectAttributes.addFlashAttribute("success", "Deleted the Student record Success fully !!");
+        redirectAttributes.addFlashAttribute("success", "Deleted the Student record Successfully !!");
         return "redirect:/students";
     }
 
     @GetMapping("detail")
-    public String displayTeacherDetails(@RequestParam Integer studentId, Model model) {
+    public String displayStudentDetails(@RequestParam Integer studentId, Model model) {
 
         Optional<Student> result = studentRepository.findById(studentId);
 

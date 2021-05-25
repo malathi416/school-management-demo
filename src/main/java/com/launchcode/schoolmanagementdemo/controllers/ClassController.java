@@ -52,13 +52,13 @@ public class ClassController {
         return "class/edit-class-page";
     }
 
-
-    @PostMapping("showFormForUpdate")
-    public String processEditForm(@RequestParam(required = false) Integer id,@ModelAttribute Classes editClass,final RedirectAttributes redirectAttributes) {
-//        redirectAttributes.addFlashAttribute("message", "updated the class record Success fully !!");
-        classesRepository.save(editClass);
-        return "redirect:";
-    }
+//
+//    @PostMapping("showFormForUpdate")
+//    public String processEditForm(@RequestParam(required = false) Integer id,@ModelAttribute Classes editClass,final RedirectAttributes redirectAttributes) {
+////        redirectAttributes.addFlashAttribute("message", "updated the class record Success fully !!");
+//        classesRepository.save(editClass);
+//        return "redirect:";
+//    }
     @GetMapping("/deleteClass/{id}")
     public String deleteClassById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         classesRepository.deleteById(id);

@@ -18,6 +18,9 @@ public class Classes extends AbstractEntity {
     @OneToMany(mappedBy="classes")
     private final List<Teacher> teachers = new ArrayList<>();
 
+    @OneToMany(mappedBy = "classes")
+    private final List<Student> students = new ArrayList<>();
+
     public Classes(){
 
     }
@@ -37,6 +40,9 @@ public class Classes extends AbstractEntity {
         return teachers;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
 
     @Override
     public String toString() {

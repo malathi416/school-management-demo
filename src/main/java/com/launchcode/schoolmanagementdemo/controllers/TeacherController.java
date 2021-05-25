@@ -61,15 +61,15 @@ public class TeacherController {
         model.addAttribute("classesToTeach",classesRepository.findAll());
         return "teacher/edit-teacher-page";
     }
-    @PostMapping("showFormForUpdate")
-    public String processTeacherEditedForm(@RequestParam(required = false) Integer id,@ModelAttribute Teacher editTeacher,RedirectAttributes redirectAttributes) {
-
-        teacherRepository.save(editTeacher);
-//        redirectAttributes.addFlashAttribute("message", "updated the Teacher record Success fully !!");
-//        model.addAttribute("message","updated the Teacher record Success fully !!");
-
-        return "redirect:";
-    }
+//    @PostMapping("showFormForUpdate")
+//    public String processTeacherEditedForm(@RequestParam(required = false) Integer id,@ModelAttribute Teacher editTeacher,RedirectAttributes redirectAttributes) {
+//
+//        teacherRepository.save(editTeacher);
+////        redirectAttributes.addFlashAttribute("message", "updated the Teacher record Success fully !!");
+////        model.addAttribute("message","updated the Teacher record Success fully !!");
+//
+//        return "redirect:";
+//    }
     @GetMapping("/deleteTeacher/{id}")
     public String deleteTeacherById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         teacherRepository.deleteById(id);
