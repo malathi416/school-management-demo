@@ -14,10 +14,10 @@
             <th>First Name</th>
             <th>Last Name</th>
             <!--            <th>PhoneNumber</th>-->
-            <th>Email</th>
+<!--            <th>Email</th>-->
             <th>Gender</th>
             <!--            <th>DateOfBirth</th>-->
-            <!--            <th>ClassToRegister</th>-->
+                        <th>ClassToRegister</th>
             <!--            <th>SchoolYear</th>-->
             <th>Update</th>
             <th>Delete</th>
@@ -29,10 +29,10 @@
                    th:text="${student.personalDetails.firstName}"></a></td>
             <td th:text="${student.personalDetails.lastName}"></td>
             <!--            <td th:text="${student.personalDetails.phoneNumber}"></td>-->
-            <td th:text="${student.personalDetails.email}"></td>
-            <td th:text="${student.gender}"></td>
+<!--            <td th:text="${student.personalDetails.email}"></td>-->
+            <td th:text="${student.gender.displayName}"></td>
             <!--            <td th:text="${student.personalDetails.dateOfBirth}"></td>-->
-            <!--            <td th:text="${student.classes}"></td>-->
+                        <td th:text="${student.classes}"></td>
             <!--            <td th:text="${student.schoolYear}"></td>-->
             <td><a th:href="@{/students/showFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
             </td>

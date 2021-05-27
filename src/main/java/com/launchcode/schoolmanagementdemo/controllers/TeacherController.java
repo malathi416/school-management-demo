@@ -26,7 +26,7 @@ public class TeacherController {
 
     @GetMapping
     public String displayAllTeachers(Model model) {
-        model.addAttribute("title","Teachers List");
+        model.addAttribute("title","All Teachers List");
         model.addAttribute("teachers",teacherRepository.findAll());
         return "teacher/teacher-page";
     }

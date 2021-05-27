@@ -26,7 +26,7 @@ public class StudentController {
     private ClassesRepository classesRepository;
     @GetMapping
     public String displayAllStudents(Model model) {
-        model.addAttribute("title","Students List");
+        model.addAttribute("title","All Students List");
         model.addAttribute("students",studentRepository.findAll());
         return "student/student-page";
     }

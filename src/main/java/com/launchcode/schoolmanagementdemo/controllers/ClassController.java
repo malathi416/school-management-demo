@@ -2,6 +2,8 @@ package com.launchcode.schoolmanagementdemo.controllers;
 
 import com.launchcode.schoolmanagementdemo.data.ClassesRepository;
 import com.launchcode.schoolmanagementdemo.models.Classes;
+import com.launchcode.schoolmanagementdemo.models.Student;
+import com.launchcode.schoolmanagementdemo.models.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -37,7 +40,6 @@ public class ClassController {
                                        Errors errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute("title", "Add Class");
-//            model.addAttribute(new Classes());
             return "class/newClassForm";
         }
        classesRepository.save(classes);
@@ -47,7 +49,7 @@ public class ClassController {
     public String displayEditForm(Model model, @PathVariable(value="id") Integer id) {
         Optional<Classes> result = classesRepository.findById(id);
         Classes editClass = result.get();
-        model.addAttribute("title","Update  Class   "+ editClass.getClassName()) ;
+        model.addAttribute("title","Update  Class") ;
         model.addAttribute("classes",editClass);
         return "class/edit-class-page";
     }
@@ -64,6 +66,28 @@ public class ClassController {
         classesRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("success", "Deleted the class record Success fully !!");
         return "redirect:/classes";
+    }
+    //fetching data using one-to-many relation from student and teacher classes to classes page
+    @GetMapping("detail")
+    public String displayStudentList(@RequestParam Integer classId, Model model) {
+        Optional<Classes> result = classesRepository.findById(classId);
+        Classes fetchedClass = result.get();
+        List<Student> studentList = fetchedClass.getStudents();
+        List<Teacher> teacherList = fetchedClass.getTeachers();
+        model.addAttribute("title",fetchedClass.getClassName() +" Enrolled List");
+        if(studentList.isEmpty()){
+            model.addAttribute("title", "No students Registered" );
+        }else{
+            model.addAttribute("title2","Students");
+            model.addAttribute("students", studentList);
+        }
+        if(teacherList.isEmpty()){
+            model.addAttribute("title1", "No teachers Registered" );
+        }else{
+            model.addAttribute("title1","Teachers");
+            model.addAttribute("teachers", teacherList);
+        }
+        return "class/student-list";
     }
 
 }
