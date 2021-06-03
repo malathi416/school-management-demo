@@ -36,13 +36,13 @@
             <!--            <td th:text="${student.schoolYear}"></td>-->
             <td><a th:href="@{/students/showFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
             </td>
-            <td><a th:href="@{/students/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</a></td>
+            <td><a th:href="@{/students/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</a></td>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+                            <h5 class="modal-title" id="deleteModalLabel">DELETE</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -68,14 +68,22 @@
 
 <script>
     $(document).ready(function() {
-        $('#studentTable').DataTable();
+        $('#studentTable').DataTable( {
+          columns: [
+            null,
+            null,
+            null,
+            null,
+            { orderable: false },
+            { orderable: false }
+          ]
+        } );
     });
 
-</script>
-<script>
-$( document ).on( "click", "#delete", function() {
-  $('#exampleModal').modal('hide');
-});
+    $( document ).on( "click", "#delete", function() {
+      $('#deleteModal').modal('hide');
+    });
+
 </script>
 </body>
 </html>

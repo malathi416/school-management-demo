@@ -1,5 +1,6 @@
 package com.launchcode.schoolmanagementdemo.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -15,10 +16,10 @@ public class Classes extends AbstractEntity {
     @Size(min = 3,max = 50,message = "Name must be between 3 - 50 characters")
     private String className;
 
-    @OneToMany(mappedBy="classes")
+    @OneToMany(mappedBy="classes",cascade = CascadeType.ALL)
     private final List<Teacher> teachers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "classes")
+    @OneToMany(mappedBy = "classes",cascade = CascadeType.ALL)
     private final List<Student> students = new ArrayList<>();
 
     public Classes(){
