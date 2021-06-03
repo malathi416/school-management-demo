@@ -12,7 +12,7 @@
         <tr>
             <th>Classes</th>
             <th>Update</th>
-<!--            <th>Delete</th>-->
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@
             <td ><a th:href="'/classes/detail?classId=' + ${class.id}"
                     th:text="${class.className}"></a></td>
             <td><a th:href="@{/classes/showFormForUpdate/{id}(id=${class.id})}" class="btn btn-primary">Update</a></td>
-<!--            <td><a th:href="@{/classes/deleteClass/{id}(id=${class.id})}" class="btn btn-danger">Delete</a></td>-->
+            <td><a th:href="@{/classes/deleteClass/{id}(id=${class.id})}" class="btn btn-danger">Delete</a></td>
         </tr>
         </tbody>
         <p th:text="${message}"></p>

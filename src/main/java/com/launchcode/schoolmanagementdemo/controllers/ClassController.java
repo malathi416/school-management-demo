@@ -43,6 +43,7 @@ public class ClassController {
             return "class/newClassForm";
         }
        classesRepository.save(classes);
+
         return "redirect:";
     }
     @GetMapping("showFormForUpdate/{id}")
@@ -61,12 +62,48 @@ public class ClassController {
 //        classesRepository.save(editClass);
 //        return "redirect:";
 //    }
-    @GetMapping("/deleteClass/{id}")
-    public String deleteClassById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+@GetMapping("/deleteClass/{id}")
+public String deleteClassById(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+    Optional<Classes> result = classesRepository.findById(id);
+    Classes fetchedClass = result.get();
+    List<Student> studentList = fetchedClass.getStudents();
+    List<Teacher> teacherList = fetchedClass.getTeachers();
+    if(teacherList.size()!=0 && studentList.size()!=0){
+        Optional<Classes> result2 = classesRepository.findById(id);
+        Classes fetchedClass2 = result.get();
+        model.addAttribute("title","DeleteClass") ;
+        model.addAttribute("classes",fetchedClass2);
+        model.addAttribute("message", "Teacher & Student is present in this class ,Do you still need to delete this class record?");
+        return "class/delete-record";
+    }
+    if(studentList.size()!=0 ){
+        Optional<Classes> result2 = classesRepository.findById(id);
+        Classes fetchedClass2 = result.get();
+        model.addAttribute("title","DeleteClass") ;
+        model.addAttribute("classes",fetchedClass2);
+        model.addAttribute("message", "Student is present in this class,Do you still need to delete this class record?");
+        return "class/delete-record";
+    }
+    if(teacherList.size()!=0){
+        Optional<Classes> result2 = classesRepository.findById(id);
+        Classes fetchedClass2 = result.get();
+        model.addAttribute("title","DeleteClass") ;
+        model.addAttribute("classes",fetchedClass2);
+        model.addAttribute("message", "Teacher is present in this class,Do you still need to delete this class record?");
+        return "class/delete-record";
+    }
+
+    classesRepository.deleteById(id);
+    redirectAttributes.addFlashAttribute("success", "Deleted the class record Success fully !!");
+    return "redirect:/classes";
+}
+    @GetMapping("/deleteClass1/{id}")
+    public String deleteClassById1(@PathVariable(value="id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         classesRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("success", "Deleted the class record Success fully !!");
         return "redirect:/classes";
     }
+
     //fetching data using one-to-many relation from student and teacher classes to classes page
     @GetMapping("detail")
     public String displayStudentList(@RequestParam Integer classId, Model model) {

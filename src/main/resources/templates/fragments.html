@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title>School Management</title>
+    <title>School Management System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -15,14 +15,11 @@
 </head>
 <body>
 <div th:fragment="header">
-
     <div class="bg-secondary">
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="row justify-content-center">
-                <!--                <div class="col-md-6 text-center mb-5">-->
-                <div class="text-info">
-
-                    <h1 class="heading-section">School Management</h1>
+            <div class="text-info">
+                    <div class="row justify-content-center">
+                    <h1 class="heading-section">School Management System</h1>
                 </div>
             </div>
             <!--            </div>-->
@@ -38,10 +35,10 @@
                     <a class="nav-link" th:href="@{/classes}">Classes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/teachers}">Teacher</a>
+                    <a class="nav-link" th:href="@{/teachers}">Teachers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/students}">Student</a>
+                    <a class="nav-link" th:href="@{/students}">Students</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -52,7 +49,6 @@
     <div class="row justify-content-center">
         <h3 th:text="${title}" class="text-info"></h3>
     </div>
-
 </div>
 </body>
 </html>

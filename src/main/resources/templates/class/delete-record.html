@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<div class="container">
+    <div class="alert alert-danger" role="alert" th:text="${success}" th:if="${success}"></div>
+<table class="table table-bordered table-striped table-responsive-md">
+    <thead>
+    <tr>
+        <th>Classes</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="class: ${classes}">
+        <td ><a th:href="'/classes/detail?classId=' + ${class.id}"
+                th:text="${class.className}"></a></td>
+        <td><a th:href="@{/classes/deleteClass1/{id}(id=${class.id})}" class="btn btn-danger">Delete</a>
+            <a class="btn btn-info" href="/classes">Cancel</a>
+        </td>
+    </tr>
+    </tbody>
+    <p th:text="${message}"></p>
+</table>
+</div>
+</body>
+</html>
